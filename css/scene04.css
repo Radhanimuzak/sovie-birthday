@@ -1,0 +1,591 @@
+/* ========================================
+   SCENE 04 — BIRTHDAY GREETING
+======================================== */
+
+#greeting-scene {
+
+    position: relative;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #fffafc 0%,
+            #fdf1f5 40%,
+            #f4e0e8 100%
+        );
+
+}
+
+
+/* ========================================
+   GREETING BACKGROUND
+======================================== */
+
+.greeting-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* ========================================
+   GREETING GLOW
+======================================== */
+
+.greeting-glow {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 420px;
+    height: 420px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    filter: blur(100px);
+
+    opacity: 0.65;
+
+    animation:
+        greetingGlow
+        6s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes greetingGlow {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+        opacity: 0.45;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+
+        opacity: 0.75;
+
+    }
+
+}
+
+
+/* ========================================
+   GREETING CONTAINER
+======================================== */
+
+.greeting-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(800px, 90%);
+
+    min-height: 500px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* ========================================
+   GREETING LINE
+======================================== */
+
+.greeting-line {
+
+    margin: 8px 0;
+
+    font-size:
+        clamp(
+            18px,
+            3vw,
+            28px
+        );
+
+    line-height: 1.5;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+}
+
+
+/* ========================================
+   GREETING EMPHASIS
+======================================== */
+
+.greeting-line.emphasis {
+
+    margin-top: 15px;
+
+    font-size:
+        clamp(
+            32px,
+            6vw,
+            58px
+        );
+
+    font-weight: 400;
+
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 20px
+        rgba(255, 190, 215, 0.5);
+
+}
+
+
+/* ========================================
+   GREETING LINE VISIBLE
+======================================== */
+
+.greeting-line.visible {
+
+    animation:
+        greetingLineAppear
+        0.9s
+        ease
+        forwards;
+
+}
+
+
+@keyframes greetingLineAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ========================================
+   "IT'S YOU" SPECIAL ANIMATION
+======================================== */
+
+.greeting-line.emphasis.visible {
+
+    animation:
+        greetingEmphasisAppear
+        1.1s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        )
+        forwards;
+
+}
+
+
+@keyframes greetingEmphasisAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.9);
+
+        text-shadow:
+            0 0 0
+            rgba(255, 190, 215, 0);
+
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.05);
+
+        text-shadow:
+            0 0 35px
+            rgba(255, 190, 215, 0.75);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        text-shadow:
+            0 0 20px
+            rgba(255, 190, 215, 0.5);
+
+    }
+
+}
+
+
+/* ========================================
+   HAPPY BIRTHDAY
+======================================== */
+
+.greeting-birthday {
+
+    margin-top: 35px;
+
+    font-size:
+        clamp(
+            32px,
+            6vw,
+            64px
+        );
+
+    line-height: 1.1;
+
+    font-weight: 400;
+
+    letter-spacing: 3px;
+
+    opacity: 0;
+
+    transform:
+        translateY(20px)
+        scale(0.95);
+
+    text-shadow:
+        0 0 20px
+        rgba(255, 190, 215, 0.5);
+
+}
+
+
+/* ========================================
+   HAPPY BIRTHDAY VISIBLE
+======================================== */
+
+.greeting-birthday.visible {
+
+    animation:
+        birthdayTitleAppear
+        1.2s
+        ease
+        forwards;
+
+}
+
+
+@keyframes birthdayTitleAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.9);
+
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.04);
+
+        text-shadow:
+            0 0 35px
+            rgba(255, 190, 215, 0.8);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        text-shadow:
+            0 0 25px
+            rgba(255, 190, 215, 0.55);
+
+    }
+
+}
+
+
+/* ========================================
+   LET'S BEGIN BUTTON
+======================================== */
+
+#greeting-continue-button {
+
+    margin-top: 40px;
+
+    padding:
+        14px 32px;
+
+    border:
+        1px solid
+        rgba(61, 41, 50, 0.25);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.4);
+
+    color: #3d2932;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.3s ease;
+
+}
+
+
+#greeting-continue-button.visible {
+
+    animation:
+        greetingButtonAppear
+        1s
+        ease
+        forwards;
+
+}
+
+
+@keyframes greetingButtonAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ========================================
+   BUTTON HOVER
+======================================== */
+
+#greeting-continue-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 10px 30px
+        rgba(91, 48, 66, 0.12);
+
+}
+
+
+/* ========================================
+   SCENE 04 MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .greeting-container {
+
+        width: 90%;
+
+        min-height: 450px;
+
+    }
+
+    .greeting-line {
+
+        font-size: 17px;
+
+        letter-spacing: 1px;
+
+    }
+
+    .greeting-line.emphasis {
+
+        font-size: 36px;
+
+        letter-spacing: 2px;
+
+    }
+
+    .greeting-birthday {
+
+        margin-top: 28px;
+
+        font-size: 34px;
+
+        letter-spacing: 2px;
+
+    }
+
+    #greeting-continue-button {
+
+        margin-top: 32px;
+
+    }
+
+}
+/* ========================================
+   SCENE 04 — BACK BUTTON
+======================================== */
+
+#back-to-code {
+
+    margin-top: 12px;
+
+    padding:
+        8px 20px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #3d2932;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transform:
+        translateY(10px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* ========================================
+   BACK BUTTON VISIBLE
+======================================== */
+
+#back-to-code.visible {
+
+    opacity: 0.5;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+
+}
+
+
+/* ========================================
+   BACK BUTTON HOVER
+======================================== */
+
+#back-to-code:hover {
+
+    opacity: 1;
+
+    transform:
+        translateY(-2px);
+
+}
+

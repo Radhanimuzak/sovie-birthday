@@ -1,0 +1,188 @@
+<section
+    id="flower-scene"
+    class="scene"
+>
+
+    <!-- ========================================
+         FLOWER BACKGROUND
+    ======================================== -->
+
+    <div class="flower-background">
+
+        <div class="flower-glow"></div>
+
+    </div>
+
+
+    <!-- ========================================
+         FLOWER CONTENT
+    ======================================== -->
+
+    <div class="flower-container">
+
+
+        <!-- ========================================
+             HEADING
+        ======================================== -->
+
+        <p class="flower-eyebrow">
+            For Sovie
+        </p>
+
+
+        <h2 class="flower-title">
+            Arrange the Flowers
+        </h2>
+
+        <p class="flower-subtitle">
+            Create something beautiful for you.
+        </p>
+
+        <!-- ========================================
+             INSTRUCTION
+        ======================================== -->
+
+        <p class="flower-instruction">
+            Drag the flowers into the bouquet.
+        </p>
+
+
+        <!-- ========================================
+             FLOWER AREA
+        ======================================== -->
+
+        <div
+            class="flower-area"
+            id="flower-area"
+        >
+
+            <p class="flower-area-title">
+                Your Flowers
+            </p>
+
+            <div
+                class="flower"
+                id="flower-one"
+                data-flower="one"
+                draggable="true"
+                aria-label="Flower 1"
+            >
+                <img src="assets/scene05/flower.png" alt="Pink flower">
+            </div>
+
+
+            <div
+                class="flower"
+                id="flower-two"
+                data-flower="two"
+                draggable="true"
+                aria-label="Flower 2"
+            >
+                <img src="assets/scene05/flower.png" alt="Pink flower">
+            </div>
+
+
+            <div
+                class="flower"
+                id="flower-three"
+                data-flower="three"
+                draggable="true"
+                aria-label="Flower 3"
+            >
+                <img src="assets/scene05/flower.png" alt="Pink flower">
+            </div>
+
+
+            <div
+                class="flower"
+                id="flower-four"
+                data-flower="four"
+                draggable="true"
+                aria-label="Flower 4"
+            >
+                <img src="assets/scene05/flower.png" alt="Pink flower">
+            </div>
+
+
+        </div>
+
+
+        <!-- ========================================
+             BOUQUET / DROP ZONES
+        ======================================== -->
+
+        <div
+            class="bouquet-area"
+            id="bouquet-area"
+        >
+
+            <img
+                class="bouquet-base"
+                src="assets/scene05/bouquet-empty.png"
+                alt="Empty pink bouquet"
+            >
+
+            <img
+                class="bouquet-final"
+                src="assets/scene05/bouquet-full-reference.png"
+                alt="Complete flower bouquet"
+            >
+
+            <div class="bouquet-target target-one"></div>
+            <div class="bouquet-target target-two"></div>
+            <div class="bouquet-target target-three"></div>
+            <div class="bouquet-target target-four"></div>
+
+        </div>
+
+        <p
+            class="bouquet-progress"
+            id="bouquet-progress"
+            aria-live="polite"
+        >
+            0 / 4
+        </p>
+
+
+        <!-- ========================================
+             COMPLETION MESSAGE
+        ======================================== -->
+
+        <div
+            class="flower-completion"
+            id="flower-completion"
+        >
+
+            <p>
+                Beautiful.
+            </p>
+
+            <span>
+                Just like you.
+            </span>
+
+            <button
+                id="continue-to-birthday"
+            >
+                CONTINUE
+            </button>
+
+        </div>
+
+
+        <!-- ========================================
+             BACK BUTTON
+        ======================================== -->
+
+        <button
+            id="back-to-greeting"
+        >
+
+            BACK
+
+        </button>
+
+
+    </div>
+
+</section>

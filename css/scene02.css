@@ -1,0 +1,774 @@
+/* ========================================
+   SCENE 02 — THE GIFT
+======================================== */
+
+#gift-scene {
+    position: relative;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #fff9fb 0%,
+            #fdf0f5 40%,
+            #f6e2ea 100%
+        );
+}
+
+
+/* ========================================
+   GIFT BACKGROUND
+======================================== */
+
+.gift-background {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.gift-glow {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 350px;
+    height: 350px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    filter: blur(80px);
+
+    opacity: 0.7;
+
+    animation:
+        giftGlow
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes giftGlow {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+        opacity: 0.5;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+
+        opacity: 0.8;
+    }
+
+}
+
+
+/* ========================================
+   GIFT CONTENT
+======================================== */
+
+.gift-container {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(800px, 90%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        giftContentAppear
+        1.2s
+        ease
+        forwards;
+}
+
+
+@keyframes giftContentAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   GIFT TEXT
+======================================== */
+
+.gift-eyebrow {
+    margin-bottom: 8px;
+
+    font-size: 15px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.7;
+}
+
+.gift-container h2 {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            70px
+        );
+
+    font-weight: 400;
+}
+
+
+/* ========================================
+   GIFT WRAPPER
+======================================== */
+
+.gift-wrapper {
+
+    position: relative;
+
+    width: 260px;
+    height: 240px;
+
+    margin:
+        0 auto 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   GIFT BOX
+======================================== */
+
+.gift-box {
+
+    position: relative;
+
+    width: 190px;
+    height: 150px;
+}
+
+
+/* ========================================
+   GIFT BODY
+======================================== */
+
+.gift-body {
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 190px;
+    height: 130px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dca9bd,
+            #c98da7
+        );
+
+    box-shadow:
+        0 25px 40px
+        rgba(91, 48, 66, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   GIFT LID
+======================================== */
+
+.gift-lid {
+
+    position: absolute;
+
+    top: 0;
+    left: -8px;
+
+    width: 206px;
+    height: 45px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8bacb,
+            #d99eb7
+        );
+
+    z-index: 4;
+
+    box-shadow:
+        0 10px 20px
+        rgba(91, 48, 66, 0.12);
+
+    transition:
+        transform
+        0.8s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        );
+}
+
+
+/* ========================================
+   RIBBON HORIZONTAL
+======================================== */
+
+.gift-ribbon-horizontal {
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 32px;
+    height: 100%;
+
+    transform:
+        translateX(-50%);
+
+    background: #f8d8e3;
+}
+
+
+/* ========================================
+   RIBBON VERTICAL
+======================================== */
+
+.gift-ribbon-vertical {
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 32px;
+    height: 100%;
+
+    transform:
+        translateX(-50%);
+
+    background: #f4cbd8;
+}
+
+
+/* ========================================
+   GIFT BOW
+======================================== */
+
+.gift-bow {
+
+    position: absolute;
+
+    top: -38px;
+    left: 50%;
+
+    width: 80px;
+    height: 55px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 6;
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.5s ease;
+}
+
+.bow-left,
+.bow-right {
+
+    position: absolute;
+
+    top: 10px;
+
+    width: 42px;
+    height: 30px;
+
+    border:
+        8px solid
+        #e7b2c5;
+
+    background: transparent;
+
+    border-radius: 50%;
+}
+
+.bow-left {
+    left: 0;
+    transform: rotate(-25deg);
+}
+
+.bow-right {
+    right: 0;
+    transform: rotate(25deg);
+}
+
+.bow-center {
+
+    position: absolute;
+
+    top: 20px;
+    left: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #d995b0;
+}
+
+
+/* ========================================
+   GIFT HOVER
+======================================== */
+
+.gift-wrapper:hover .gift-box {
+
+    animation:
+        giftHover
+        1.2s
+        ease-in-out
+        infinite;
+}
+
+.gift-wrapper:hover .gift-lid {
+
+    transform:
+        translateY(-5px);
+}
+
+
+@keyframes giftHover {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+
+}
+
+
+/* ========================================
+   GIFT HINT
+======================================== */
+
+.gift-hint {
+
+    margin-bottom: 22px;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.65;
+}
+
+
+/* ========================================
+   GIFT BUTTONS
+======================================== */
+
+#open-gift-button,
+#back-to-countdown {
+
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding:
+        14px 32px;
+
+    border:
+        1px solid
+        rgba(61, 41, 50, 0.3);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.35);
+
+    color: #3d2932;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#open-gift-button:hover,
+#back-to-countdown:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    box-shadow:
+        0 10px 30px
+        rgba(91, 48, 66, 0.12);
+}
+
+
+/* ========================================
+   BACK BUTTON
+======================================== */
+
+#back-to-countdown {
+
+    margin-top: 12px;
+
+    padding:
+        8px 20px;
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.5;
+}
+
+#back-to-countdown:hover {
+
+    background: transparent;
+
+    box-shadow: none;
+
+    opacity: 1;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ========================================
+   GIFT MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .gift-wrapper {
+        transform: scale(0.85);
+    }
+
+    .gift-container h2 {
+        margin-bottom: 20px;
+    }
+
+    .gift-hint {
+        font-size: 13px;
+    }
+
+}
+
+
+/* ========================================
+   FIREWORKS CANVAS
+======================================== */
+
+#fireworks-canvas {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 9999;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    visibility: hidden;
+}
+
+
+/* ========================================
+   FIREWORKS ACTIVE
+======================================== */
+
+#fireworks-canvas.active {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* ========================================
+   GIFT OPENING ANIMATION
+======================================== */
+
+.gift-box.opening {
+
+    animation:
+        giftShake
+        0.8s
+        ease;
+}
+
+
+/* ========================================
+   GIFT SHAKE
+======================================== */
+
+@keyframes giftShake {
+
+    0% {
+        transform:
+            translateX(0)
+            rotate(0deg);
+    }
+
+    15% {
+        transform:
+            translateX(-8px)
+            rotate(-3deg);
+    }
+
+    30% {
+        transform:
+            translateX(8px)
+            rotate(3deg);
+    }
+
+    45% {
+        transform:
+            translateX(-6px)
+            rotate(-2deg);
+    }
+
+    60% {
+        transform:
+            translateX(6px)
+            rotate(2deg);
+    }
+
+    75% {
+        transform:
+            translateX(-3px)
+            rotate(-1deg);
+    }
+
+    100% {
+        transform:
+            translateX(0)
+            rotate(0deg);
+    }
+
+}
+
+
+/* ========================================
+   OPENED GIFT LID
+======================================== */
+
+.gift-box.opened .gift-lid {
+
+    transform:
+        translateY(-75px)
+        rotate(-8deg);
+}
+
+
+/* ========================================
+   OPENED GIFT BOW
+======================================== */
+
+.gift-box.opened .gift-bow {
+
+    transform:
+        translateX(-50%)
+        translateY(-90px)
+        rotate(-12deg);
+
+    opacity: 0;
+}
+
+
+/* ========================================
+   LIGHT FROM GIFT
+======================================== */
+
+.gift-box::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 45%;
+
+    width: 30px;
+    height: 30px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 20px white,
+        0 0 50px #f7c6da,
+        0 0 100px #f7c6da;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+/* ========================================
+   LIGHT EXPLOSION
+======================================== */
+
+.gift-box.opened::after {
+
+    animation:
+        giftLightExplosion
+        1.2s
+        ease-out
+        forwards;
+}
+
+
+@keyframes giftLightExplosion {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+    }
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(4);
+    }
+
+    70% {
+
+        opacity: 0.7;
+
+        transform:
+            translate(-50%, -50%)
+            scale(8);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(12);
+    }
+
+}
+
+

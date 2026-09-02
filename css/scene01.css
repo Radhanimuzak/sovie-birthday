@@ -1,0 +1,486 @@
+/* ========================================
+   SCENE 01 — COUNTDOWN
+======================================== */
+
+#countdown-scene {
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #fff8fb 0%,
+            #fdf3f6 35%,
+            #f8e9ef 70%,
+            #f3e0e8 100%
+        );
+}
+
+
+/* ========================================
+   DREAMY BACKGROUND
+======================================== */
+
+.dreamy-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+
+/* ========================================
+   GLOW
+======================================== */
+
+.glow {
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0.35;
+
+    animation:
+        floatingGlow
+        8s
+        ease-in-out
+        infinite;
+}
+
+.glow-one {
+    top: -180px;
+    left: -120px;
+
+    background: #f6c9d8;
+}
+
+.glow-two {
+    right: -150px;
+    bottom: -180px;
+
+    background: #e8c9dc;
+
+    animation-delay: -3s;
+}
+
+.glow-three {
+    top: 35%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 300px;
+    height: 300px;
+
+    background: #ffffff;
+
+    opacity: 0.45;
+
+    animation-delay: -5s;
+}
+
+
+/* ========================================
+   GLOW ANIMATION
+======================================== */
+
+@keyframes floatingGlow {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-25px)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ========================================
+   PARTICLES
+======================================== */
+
+.particles {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.particles span {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 0 8px
+        rgba(255, 255, 255, 0.9),
+
+        0 0 16px
+        rgba(255, 210, 225, 0.7);
+
+    animation:
+        sparkle
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+/* ========================================
+   PARTICLE POSITIONS
+======================================== */
+
+.particles span:nth-child(1) {
+    top: 12%;
+    left: 18%;
+}
+
+.particles span:nth-child(2) {
+    top: 22%;
+    left: 75%;
+    animation-delay: -1s;
+}
+
+.particles span:nth-child(3) {
+    top: 38%;
+    left: 10%;
+    animation-delay: -2s;
+}
+
+.particles span:nth-child(4) {
+    top: 65%;
+    left: 20%;
+    animation-delay: -3s;
+}
+
+.particles span:nth-child(5) {
+    top: 72%;
+    left: 80%;
+    animation-delay: -1.5s;
+}
+
+.particles span:nth-child(6) {
+    top: 82%;
+    left: 35%;
+    animation-delay: -2.5s;
+}
+
+.particles span:nth-child(7) {
+    top: 18%;
+    left: 50%;
+    animation-delay: -0.5s;
+}
+
+.particles span:nth-child(8) {
+    top: 55%;
+    left: 90%;
+    animation-delay: -3.5s;
+}
+
+.particles span:nth-child(9) {
+    top: 45%;
+    left: 30%;
+    animation-delay: -1.2s;
+}
+
+.particles span:nth-child(10) {
+    top: 88%;
+    left: 65%;
+    animation-delay: -2.2s;
+}
+
+.particles span:nth-child(11) {
+    top: 30%;
+    left: 88%;
+    animation-delay: -0.8s;
+}
+
+.particles span:nth-child(12) {
+    top: 78%;
+    left: 8%;
+    animation-delay: -1.8s;
+}
+
+
+/* ========================================
+   SPARKLE ANIMATION
+======================================== */
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.15;
+
+        transform:
+            scale(0.7)
+            translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.4)
+            translateY(-10px);
+    }
+
+}
+
+
+/* ========================================
+   COUNTDOWN CONTENT
+======================================== */
+
+.countdown-container {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1000px, 90%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        contentAppear
+        1.5s
+        ease
+        forwards;
+}
+
+
+/* ========================================
+   CONTENT APPEAR
+======================================== */
+
+@keyframes contentAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   EYEBROW
+======================================== */
+
+.eyebrow {
+    margin-bottom: 15px;
+
+    font-size: 17px;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+
+    opacity: 0.75;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+h1 {
+    max-width: 850px;
+
+    margin:
+        0 auto 55px;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            82px
+        );
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    letter-spacing: -2px;
+
+    text-wrap: balance;
+}
+
+
+/* ========================================
+   COUNTDOWN
+======================================== */
+
+.countdown {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap:
+        clamp(
+            25px,
+            5vw,
+            70px
+        );
+
+    flex-wrap: wrap;
+}
+
+
+/* ========================================
+   COUNTDOWN ITEM
+======================================== */
+
+.countdown-item {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    min-width: 100px;
+}
+
+
+/* ========================================
+   COUNTDOWN NUMBERS
+======================================== */
+
+.countdown-item span {
+    display: block;
+
+    font-size:
+        clamp(
+            45px,
+            6vw,
+            72px
+        );
+
+    line-height: 1;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 15px
+        rgba(255, 255, 255, 0.8);
+}
+
+
+/* ========================================
+   COUNTDOWN LABEL
+======================================== */
+
+.countdown-item small {
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 0.7;
+}
+
+
+/* ========================================
+   COUNTDOWN CONTINUE BUTTON
+======================================== */
+
+#continue-button {
+    display: block;
+
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding:
+        14px 32px;
+
+    border:
+        1px solid
+        rgba(61, 41, 50, 0.3);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.35);
+
+    color: #3d2932;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#continue-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    box-shadow:
+        0 10px 30px
+        rgba(91, 48, 66, 0.12);
+}
+
+

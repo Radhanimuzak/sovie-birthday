@@ -1,0 +1,628 @@
+/* ========================================
+   SCENE 03 — BIRTHDAY CODE
+======================================== */
+
+#code-scene {
+
+    position: relative;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #fffafc 0%,
+            #fdf1f6 40%,
+            #f5e1ea 100%
+        );
+}
+
+
+/* ========================================
+   CODE BACKGROUND
+======================================== */
+
+.code-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.code-glow {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 400px;
+    height: 400px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    filter: blur(90px);
+
+    opacity: 0.7;
+
+    animation:
+        codeGlow
+        5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes codeGlow {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+        opacity: 0.5;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+
+        opacity: 0.8;
+    }
+
+}
+
+
+/* ========================================
+   CODE CONTAINER
+======================================== */
+
+.code-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(90%, 650px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* ========================================
+   BIRTHDAY CARD
+======================================== */
+
+.birthday-card {
+
+    position: relative;
+
+    width: min(420px, 90vw);
+
+    min-height: 520px;
+
+    padding:
+        55px 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.8);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(91, 48, 66, 0.12),
+
+        0 0 40px
+        rgba(255, 255, 255, 0.7);
+
+    backdrop-filter: blur(15px);
+
+    transform:
+        translateY(20px)
+        scale(0.95);
+
+    opacity: 0;
+
+    animation:
+        cardAppear
+        1s
+        ease
+        forwards;
+}
+
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* ========================================
+   CARD DECORATION
+======================================== */
+
+.birthday-card::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: 22px;
+    left: 25px;
+
+    font-size: 18px;
+
+    opacity: 0.5;
+}
+
+.birthday-card::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 22px;
+
+    font-size: 18px;
+
+    opacity: 0.5;
+}
+
+
+/* ========================================
+   CODE EYEBROW
+======================================== */
+
+.code-eyebrow {
+
+    margin-bottom: 30px;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.65;
+}
+
+
+/* ========================================
+   BIRTHDAY DATE
+======================================== */
+
+.birthday-date {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* ========================================
+   DATE — DAY
+======================================== */
+
+.date-day {
+
+    display: block;
+
+    font-size: 100px;
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+    letter-spacing: 3px;
+
+    color: #3d2932;
+
+    text-shadow:
+        0 0 20px
+        rgba(255, 255, 255, 0.9);
+}
+
+
+/* ========================================
+   DATE — MONTH
+======================================== */
+
+.date-month {
+
+    display: block;
+
+    margin-top: 18px;
+
+    font-size: 20px;
+
+    letter-spacing: 8px;
+
+    font-weight: 400;
+}
+
+
+/* ========================================
+   DATE — YEAR
+======================================== */
+
+.date-year {
+
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 17px;
+
+    letter-spacing: 6px;
+
+    opacity: 0.65;
+}
+
+
+/* ========================================
+   MESSAGE
+======================================== */
+
+.birthday-code-message {
+
+    max-width: 280px;
+
+    margin-top: 45px;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
+
+    opacity: 0.7;
+}
+
+
+/* ========================================
+   SCENE 03 CONTINUE BUTTON
+======================================== */
+
+#continue-code-button {
+
+    margin-top: 35px;
+
+    padding:
+        13px 30px;
+
+    border:
+        1px solid
+        rgba(61, 41, 50, 0.25);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.4);
+
+    color: #3d2932;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+#continue-code-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 10px 30px
+        rgba(91, 48, 66, 0.12);
+}
+
+
+/* ========================================
+   BIRTHDAY CARD APPEAR
+======================================== */
+
+@keyframes buttonAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* ========================================
+   BIRTHDAY CODE SEQUENCE
+======================================== */
+
+.date-day,
+.date-month,
+.date-year,
+.birthday-code-message,
+#continue-code-button {
+    opacity: 0;
+}
+
+
+/* ========================================
+   DATE — 06 APPEAR
+======================================== */
+
+@keyframes codeDateAppear {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.7);
+
+        text-shadow:
+            0 0 0
+            rgba(255, 255, 255, 0);
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            translateY(-5px)
+            scale(1.08);
+
+        text-shadow:
+            0 0 30px
+            rgba(255, 190, 220, 0.9);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        text-shadow:
+            0 0 20px
+            rgba(255, 255, 255, 0.9);
+    }
+
+}
+
+
+/* ========================================
+   SEPTEMBER / 2026 APPEAR
+======================================== */
+
+@keyframes codeTextAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   MESSAGE APPEAR
+======================================== */
+
+@keyframes codeMessageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 0.7;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   CONTINUE APPEAR
+======================================== */
+
+@keyframes codeButtonAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ========================================
+   MOBILE — SCENE 03
+======================================== */
+
+@media (max-width: 600px) {
+
+    .birthday-card {
+
+        min-height: 480px;
+
+        padding:
+            45px 25px;
+    }
+
+    .date-day {
+
+        font-size: 80px;
+    }
+
+    .date-month {
+
+        font-size: 16px;
+
+        letter-spacing: 6px;
+    }
+
+    .date-year {
+
+        font-size: 14px;
+
+        letter-spacing: 5px;
+    }
+
+    .birthday-code-message {
+
+        margin-top: 35px;
+
+        font-size: 14px;
+    }
+
+}
+/* ========================================
+   BACK — SCENE 03
+======================================== */
+
+#back-to-gift {
+
+    margin-top: 12px;
+
+    padding:
+        8px 20px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #3d2932;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0.5;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+#back-to-gift:hover {
+
+    opacity: 1;
+
+    transform:
+        translateY(-2px);
+}
+

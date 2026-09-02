@@ -1,0 +1,59 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   BODY
+======================================== */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f8f1f4;
+    color: #3d2932;
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   APP
+======================================== */
+
+#app {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   SCENE
+======================================== */
+
+.scene {
+    position: relative;
+
+    display: none;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+}
+
+.scene.active {
+    display: flex;
+}
+
+

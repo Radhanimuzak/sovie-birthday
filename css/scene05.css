@@ -1,0 +1,2323 @@
+/* ========================================
+   SCENE 05 — ARRANGE THE FLOWERS
+======================================== */
+
+#flower-scene {
+
+    position: relative;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #fffafc 0%,
+            #fdf1f6 40%,
+            #f4e0e8 100%
+        );
+
+}
+
+
+/* ========================================
+   FLOWER BACKGROUND
+======================================== */
+
+.flower-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* ========================================
+   FLOWER GLOW
+======================================== */
+
+.flower-glow {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 450px;
+    height: 450px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    filter: blur(100px);
+
+    opacity: 0.65;
+
+    animation:
+        flowerGlow
+        6s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes flowerGlow {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.9);
+
+        opacity: 0.45;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.1);
+
+        opacity: 0.75;
+
+    }
+
+}
+
+
+/* ========================================
+   FLOWER CONTAINER
+======================================== */
+
+.flower-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(900px, 90%);
+
+    min-height: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* ========================================
+   FLOWER EYEBROW
+======================================== */
+
+.flower-eyebrow {
+
+    margin-bottom: 12px;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    opacity: 0.6;
+
+}
+
+
+/* ========================================
+   FLOWER TITLE
+======================================== */
+
+.flower-title {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            70px
+        );
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    letter-spacing: -1px;
+
+    text-shadow:
+        0 0 20px
+        rgba(255, 255, 255, 0.8);
+
+}
+
+
+/* ========================================
+   FLOWER INSTRUCTION
+======================================== */
+
+.flower-instruction {
+
+    margin-top: 22px;
+
+    margin-bottom: 35px;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.65;
+
+}
+
+
+/* ========================================
+   FLOWER AREA
+======================================== */
+
+.flower-area {
+
+    width: 100%;
+
+    min-height: 100px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap:
+        clamp(
+            18px,
+            4vw,
+            45px
+        );
+
+    margin-bottom: 25px;
+
+}
+
+
+/* ========================================
+   FLOWER
+======================================== */
+
+.flower {
+
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 48px;
+
+    cursor: grab;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease,
+        opacity 0.3s ease;
+
+}
+
+
+/* ========================================
+   FLOWER HOVER
+======================================== */
+
+.flower:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.12);
+
+    filter:
+        drop-shadow(
+            0 8px 12px
+            rgba(91, 48, 66, 0.15)
+        );
+
+}
+
+
+/* ========================================
+   FLOWER ACTIVE / CLICK
+======================================== */
+
+.flower:active {
+
+    cursor: grabbing;
+
+    transform:
+        scale(1.08);
+
+}
+
+
+/* ========================================
+   FLOWER DRAGGING
+======================================== */
+
+.flower.dragging {
+
+    opacity: 0.45;
+
+    transform:
+        scale(1.12);
+
+}
+
+
+/* ========================================
+   VASE AREA
+======================================== */
+
+.vase-area {
+
+    position: relative;
+
+    width: 220px;
+    height: 190px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 5px;
+
+    border-radius: 30px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* ========================================
+   VASE DROP HINT
+======================================== */
+
+.vase-area::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 150px;
+
+    border:
+        1px dashed
+        rgba(61, 41, 50, 0.12);
+
+    border-radius: 35px;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease;
+
+}
+
+
+/* ========================================
+   VASE
+======================================== */
+
+.vase {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 110px;
+
+    line-height: 1;
+
+    cursor: default;
+
+    filter:
+        drop-shadow(
+            0 15px 15px
+            rgba(91, 48, 66, 0.12)
+        );
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+
+}
+
+
+/* ========================================
+   VASE HOVER
+======================================== */
+
+.vase-area:hover .vase {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+}
+
+
+/* ========================================
+   VASE DRAG OVER
+======================================== */
+
+.vase-area.drag-over {
+
+    transform:
+        scale(1.04);
+
+    background:
+        rgba(255, 255, 255, 0.25);
+
+    box-shadow:
+        0 0 35px
+        rgba(255, 190, 215, 0.25);
+
+}
+
+
+.vase-area.drag-over::before {
+
+    opacity: 1;
+
+}
+
+
+.vase-area.drag-over .vase {
+
+    transform:
+        translateY(-8px)
+        scale(1.08);
+
+    filter:
+        drop-shadow(
+            0 10px 25px
+            rgba(255, 180, 210, 0.35)
+        );
+
+}
+
+
+/* ========================================
+   PLACED FLOWER
+======================================== */
+
+.vase-flowers {
+
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 45px;
+    left: 50%;
+
+    width: 180px;
+    height: 120px;
+
+    transform:
+        translateX(-50%);
+
+    pointer-events: none;
+
+}
+
+
+/* ========================================
+   SCENE 05 — PNG BOUQUET ASSETS
+======================================== */
+
+#flower-scene {
+
+    overflow-y: auto;
+
+}
+
+
+#flower-scene .flower-container {
+
+    width: min(620px, 90%);
+
+    padding: 30px 0 24px;
+
+}
+
+
+#flower-scene .flower-title {
+
+    font-size:
+        clamp(
+            32px,
+            4vw,
+            46px
+        );
+
+}
+
+
+#flower-scene .flower-instruction {
+
+    margin-bottom: 12px;
+
+    text-transform: none;
+
+}
+
+
+#flower-scene .bouquet-area {
+
+    order: 4;
+
+    width: min(320px, 78vw);
+    height: auto;
+
+    aspect-ratio: 466 / 516;
+
+    margin: 0;
+
+}
+
+
+.bouquet-base {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+}
+
+
+.bouquet-target {
+
+    position: absolute;
+
+    z-index: 2;
+
+    width: 34%;
+
+    aspect-ratio: 467 / 525;
+
+    border-radius: 50%;
+
+    transition:
+        filter 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.target-one {
+
+    top: 2%;
+    left: 33%;
+
+    transform: rotate(-3deg);
+
+}
+
+
+.target-two {
+
+    top: 24%;
+    left: 4%;
+
+    transform: rotate(-16deg);
+
+}
+
+
+.target-three {
+
+    top: 25%;
+    right: 4%;
+
+    transform: rotate(16deg);
+
+}
+
+
+.target-four {
+
+    top: 43%;
+    left: 34%;
+
+    transform: rotate(4deg);
+
+}
+
+
+.bouquet-target.drag-over {
+
+    filter:
+        drop-shadow(0 0 12px rgba(246, 130, 173, 0.85));
+
+}
+
+
+.bouquet-target.drag-over::before {
+
+    position: absolute;
+
+    inset: -5px;
+
+    border: 1px solid rgba(241, 130, 169, 0.65);
+    border-radius: 50%;
+
+    content: "";
+
+}
+
+
+.bouquet-target .flower {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+
+    cursor: default;
+
+}
+
+
+.bouquet-target .flower img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+
+.bouquet-target .flower.placed {
+
+    animation:
+        assetFlowerSnap
+        0.48s
+        cubic-bezier(0.2, 0.8, 0.35, 1.2);
+
+}
+
+
+@keyframes assetFlowerSnap {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0.72);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+
+#flower-scene .bouquet-progress {
+
+    order: 5;
+
+    margin: 0 0 10px;
+
+    font-size: 13px;
+
+    color: #9a5871;
+
+}
+
+
+#flower-scene .flower-area {
+
+    order: 6;
+
+    width: min(330px, 100%);
+
+    grid-template-columns: repeat(2, minmax(110px, 1fr));
+
+    gap: 10px;
+
+    padding: 12px;
+
+}
+
+
+#flower-scene .flower-area .flower {
+
+    width: auto;
+    height: 132px;
+
+    display: flex;
+
+    background: rgba(255, 255, 255, 0.68);
+
+}
+
+
+#flower-scene .flower-area .flower img {
+
+    width: 88px;
+    height: 112px;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+}
+
+
+#flower-scene .flower-area .flower {
+
+    touch-action: none;
+
+}
+
+
+.flower-drag-preview {
+
+    position: fixed;
+
+    z-index: 9999;
+
+    width: 92px;
+    height: 116px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.08);
+
+    opacity: 0.8;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 12px 14px rgba(123, 54, 80, 0.22));
+
+}
+
+
+.flower-drag-preview img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+
+#flower-scene .flower-completion {
+
+    position: relative;
+
+    order: 7;
+
+    bottom: auto;
+    left: auto;
+
+    margin: 18px 0 0;
+
+    transform: none;
+
+}
+
+
+#flower-scene .flower-completion.visible {
+
+    animation:
+        assetCompletionAppear
+        0.8s
+        ease
+        forwards;
+
+}
+
+
+@keyframes assetCompletionAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.96);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+#flower-scene #back-to-greeting {
+
+    order: 8;
+
+    margin: 18px 0 0;
+
+}
+
+
+@media (max-width: 600px) {
+
+    #flower-scene .flower-container {
+
+        width: min(340px, 90%);
+
+        padding-top: 24px;
+
+    }
+
+
+    #flower-scene .bouquet-area {
+
+        width: min(280px, 78vw);
+
+    }
+
+
+    #flower-scene .flower-area .flower {
+
+        height: 118px;
+
+    }
+
+
+    #flower-scene .flower-area .flower img {
+
+        width: 78px;
+        height: 100px;
+
+    }
+
+}
+
+
+.vase-flowers .flower {
+
+    position: absolute;
+
+    cursor: default;
+
+}
+
+
+.vase-flowers .flower[data-flower="rose"] {
+
+    top: 0;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.vase-flowers .flower[data-flower="tulip"] {
+
+    top: 35px;
+    left: 18px;
+
+}
+
+
+.vase-flowers .flower[data-flower="cherry"] {
+
+    top: 38px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.vase-flowers .flower[data-flower="hibiscus"] {
+
+    top: 35px;
+    right: 18px;
+
+}
+
+
+.vase-flowers .flower[data-flower="sunflower"] {
+
+    top: 72px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.flower.placed {
+
+    cursor: default;
+
+    opacity: 1;
+
+    animation:
+        flowerDrop
+        0.45s
+        ease-out;
+
+}
+
+
+@keyframes flowerDrop {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* ========================================
+   BOUQUET FLOWER ILLUSTRATIONS
+======================================== */
+
+.flower {
+
+    font-size: initial;
+
+}
+
+
+.flower-art {
+
+    position: relative;
+
+    width: 58px;
+    height: 58px;
+
+    display: block;
+
+}
+
+
+.petal,
+.flower-center {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform-origin: center bottom;
+
+}
+
+
+.petal {
+
+    width: 22px;
+    height: 31px;
+
+    border-radius: 70% 70% 55% 55%;
+
+    background:
+        linear-gradient(135deg, #f9d3df, #d9789c);
+
+    box-shadow:
+        inset 3px 3px 7px rgba(255, 255, 255, 0.55),
+        0 4px 7px rgba(91, 48, 66, 0.12);
+
+}
+
+
+.petal-one {
+
+    transform: translate(-50%, -100%) rotate(0deg);
+
+}
+
+
+.petal-two {
+
+    transform: translate(-50%, -100%) rotate(72deg);
+
+}
+
+
+.petal-three {
+
+    transform: translate(-50%, -100%) rotate(144deg);
+
+}
+
+
+.petal-four {
+
+    transform: translate(-50%, -100%) rotate(216deg);
+
+}
+
+
+.petal-five {
+
+    transform: translate(-50%, -100%) rotate(288deg);
+
+}
+
+
+.flower-center {
+
+    width: 16px;
+    height: 16px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 35% 30%, #fff4c9, #d9a347 70%);
+
+    box-shadow:
+        0 2px 5px rgba(91, 48, 66, 0.18);
+
+}
+
+
+.flower-tulip .flower-art {
+
+    transform: translateY(4px);
+
+}
+
+
+.flower-tulip .petal {
+
+    width: 23px;
+    height: 38px;
+
+    border-radius: 50% 50% 42% 42%;
+
+    background:
+        linear-gradient(135deg, #ffdce7, #e687aa);
+
+}
+
+
+.flower-tulip .petal-one {
+
+    transform: translate(-50%, -100%) rotate(-25deg);
+
+}
+
+
+.flower-tulip .petal-two {
+
+    transform: translate(-50%, -100%) rotate(0deg);
+
+}
+
+
+.flower-tulip .petal-three {
+
+    transform: translate(-50%, -100%) rotate(25deg);
+
+}
+
+
+.flower-tulip .petal-four,
+.flower-tulip .petal-five,
+.flower-tulip .flower-center {
+
+    display: none;
+
+}
+
+
+.flower-cherry .petal {
+
+    width: 24px;
+    height: 25px;
+
+    border-radius: 65% 45% 65% 45%;
+
+    background:
+        linear-gradient(135deg, #fff6fa, #f2b7ca);
+
+}
+
+
+.flower-cherry .flower-center {
+
+    width: 11px;
+    height: 11px;
+
+    background: #eaa55e;
+
+}
+
+
+.flower-sunflower .petal {
+
+    width: 16px;
+    height: 35px;
+
+    border-radius: 60% 60% 50% 50%;
+
+    background:
+        linear-gradient(135deg, #ffe98a, #e9ad42);
+
+}
+
+
+.flower-sunflower .flower-center {
+
+    width: 23px;
+    height: 23px;
+
+    background:
+        radial-gradient(circle at 35% 30%, #9b6947, #5b382b 72%);
+
+}
+
+
+.flower-hibiscus .petal {
+
+    width: 25px;
+    height: 34px;
+
+    border-radius: 75% 45% 75% 45%;
+
+    background:
+        linear-gradient(135deg, #ffd2dc, #db6f8c);
+
+}
+
+
+.flower-hibiscus .flower-center {
+
+    width: 9px;
+    height: 27px;
+
+    transform: translate(-50%, -85%) rotate(18deg);
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(#f6ca66, #ce7258);
+
+}
+
+
+/* ========================================
+   BOUQUET STEM TARGETS
+======================================== */
+
+.bouquet-area {
+
+    position: relative;
+
+    width: min(480px, 100%);
+    height: 275px;
+
+    margin-top: 5px;
+
+}
+
+
+.bouquet-stem {
+
+    position: absolute;
+
+    width: 80px;
+    height: 230px;
+
+    transform-origin: bottom center;
+
+    transition:
+        filter 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.stem-drop-zone {
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 68px;
+    height: 68px;
+
+    transform: translateX(-50%);
+
+    border: 1px dashed rgba(86, 126, 94, 0.22);
+    border-radius: 50%;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.stem-line {
+
+    position: absolute;
+
+    top: 58px;
+    bottom: 0;
+    left: 50%;
+
+    width: 3px;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(to bottom, #88ad86, #496f59);
+
+}
+
+
+.stem-leaf {
+
+    position: absolute;
+
+    width: 31px;
+    height: 15px;
+
+    border-radius: 100% 0 100% 0;
+
+    background:
+        linear-gradient(135deg, #b9d9a7, #5e986b);
+
+    box-shadow:
+        inset 2px 2px 4px rgba(255, 255, 255, 0.35);
+
+}
+
+
+.leaf-left {
+
+    top: 130px;
+    left: 8px;
+
+    transform: rotate(20deg);
+
+}
+
+
+.leaf-right {
+
+    top: 165px;
+    right: 8px;
+
+    transform: scaleX(-1) rotate(20deg);
+
+}
+
+
+.stem-rose {
+
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+}
+
+
+.stem-tulip {
+
+    bottom: 5px;
+    left: 17%;
+
+    transform: rotate(-24deg);
+
+}
+
+
+.stem-cherry {
+
+    bottom: 0;
+    left: 34%;
+
+    transform: rotate(-11deg);
+
+}
+
+
+.stem-sunflower {
+
+    bottom: 0;
+    right: 34%;
+
+    transform: rotate(11deg);
+
+}
+
+
+.stem-hibiscus {
+
+    bottom: 5px;
+    right: 17%;
+
+    transform: rotate(24deg);
+
+}
+
+
+.bouquet-stem.drag-over {
+
+    filter:
+        drop-shadow(0 0 14px rgba(255, 183, 204, 0.9));
+
+}
+
+
+.bouquet-stem.drag-over .stem-drop-zone {
+
+    background: rgba(255, 255, 255, 0.6);
+
+    box-shadow:
+        0 0 20px rgba(255, 172, 200, 0.55);
+
+}
+
+
+.bouquet-stem .flower {
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 4px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    cursor: default;
+
+}
+
+
+.bouquet-progress {
+
+    margin: 2px 0 0;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.55;
+
+}
+
+
+/* ========================================
+   SCENE 05 — REFINED LAYOUT
+======================================== */
+
+.flower-container {
+
+    min-height: 0;
+
+    padding: 44px 0 24px;
+
+    justify-content: flex-start;
+
+}
+
+
+.flower-eyebrow {
+
+    margin: 0 0 6px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.flower-title {
+
+    font-size:
+        clamp(
+            34px,
+            4.5vw,
+            52px
+        );
+
+    line-height: 1.1;
+
+}
+
+
+.flower-subtitle {
+
+    margin: 7px 0 0;
+
+    font-size: 16px;
+
+    font-style: italic;
+
+    color: #9a5871;
+
+}
+
+
+.flower-instruction {
+
+    margin: 12px 0 16px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+
+.bouquet-area {
+
+    order: 4;
+
+    width: min(460px, 100%);
+    height: 260px;
+
+    margin: 0;
+
+}
+
+
+.bouquet-progress {
+
+    order: 5;
+
+    margin: -2px 0 12px;
+
+    color: #9a5871;
+
+}
+
+
+.flower-area {
+
+    order: 6;
+
+    width: min(510px, 100%);
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(70px, 1fr));
+    gap: 9px;
+
+    margin: 0;
+    padding: 12px;
+
+    border: 1px solid rgba(217, 130, 161, 0.2);
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+        0 12px 30px rgba(133, 65, 89, 0.08);
+
+}
+
+
+.flower-area-title {
+
+    grid-column: 1 / -1;
+
+    margin: 0 0 2px;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    color: #633749;
+
+}
+
+
+.flower-area .flower {
+
+    width: auto;
+    height: 104px;
+
+    flex-direction: column;
+
+    border: 1px solid rgba(217, 130, 161, 0.2);
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.66);
+
+    box-shadow:
+        0 7px 15px rgba(133, 65, 89, 0.07);
+
+}
+
+
+.flower-area .flower:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 12px 22px rgba(174, 94, 128, 0.16);
+
+}
+
+
+.flower-name {
+
+    margin-top: 2px;
+
+    font-size: 10px;
+
+    color: #633749;
+
+    white-space: nowrap;
+
+}
+
+
+.bouquet-stem .flower {
+
+    width: 70px;
+    height: 70px;
+
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+
+}
+
+
+.bouquet-stem .flower:hover {
+
+    transform: translateX(-50%);
+
+    filter: none;
+
+}
+
+
+.bouquet-stem .flower-name {
+
+    display: none;
+
+}
+
+
+.flower.placed {
+
+    animation:
+        flowerSnap
+        0.5s
+        cubic-bezier(0.2, 0.8, 0.35, 1.25);
+
+}
+
+
+@keyframes flowerSnap {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(0.62);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1.12);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* ========================================
+   FLOWER COMPLETION
+======================================== */
+
+.flower-completion {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 65px;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+.flower-completion::before,
+.flower-completion::after {
+
+    position: absolute;
+
+    color: #e6a1b8;
+
+    font-size: 18px;
+
+    content: "✦";
+
+    animation:
+        completionSparkle
+        1.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+.flower-completion::before {
+
+    top: -16px;
+    left: -24px;
+
+}
+
+
+.flower-completion::after {
+
+    right: -26px;
+    bottom: 4px;
+
+    animation-delay: -0.9s;
+
+}
+
+
+/* ========================================
+   COMPLETION TITLE
+======================================== */
+
+.flower-completion p {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            48px
+        );
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 25px
+        rgba(255, 190, 215, 0.65);
+
+}
+
+
+/* ========================================
+   COMPLETION SUBTITLE
+======================================== */
+
+.flower-completion span {
+
+    margin-top: 8px;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.65;
+
+}
+
+
+/* ========================================
+   COMPLETION VISIBLE
+======================================== */
+
+.flower-completion.visible {
+
+    animation:
+        flowerCompletionAppear
+        1s
+        ease
+        forwards;
+
+}
+
+
+@keyframes flowerCompletionAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(20px)
+            scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* ========================================
+   BACK — SCENE 05
+======================================== */
+
+#back-to-greeting {
+
+    position: relative;
+
+    margin-top: 12px;
+
+    padding:
+        8px 20px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #3d2932;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    opacity: 0.5;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+/* ========================================
+   BACK HOVER
+======================================== */
+
+#back-to-greeting:hover {
+
+    opacity: 1;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ========================================
+   SCENE 05 MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+
+    .flower-container {
+
+        width: 90%;
+
+        min-height: 600px;
+
+    }
+
+
+    .flower-eyebrow {
+
+        font-size: 11px;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .flower-title {
+
+        font-size: 34px;
+
+        line-height: 1.05;
+
+    }
+
+
+    .flower-subtitle {
+
+        font-size: 13px;
+
+    }
+
+
+    .flower-instruction {
+
+        margin-top: 18px;
+
+        margin-bottom: 25px;
+
+        font-size: 13px;
+
+    }
+
+
+    .flower-area {
+
+        gap: 8px;
+
+        padding: 9px;
+
+    }
+
+
+    .flower {
+
+        width: 55px;
+        height: 55px;
+
+        font-size: 38px;
+
+    }
+
+
+    .flower-area .flower {
+
+        height: 88px;
+
+    }
+
+
+    .flower-area-title {
+
+        font-size: 15px;
+
+    }
+
+
+    .flower-name {
+
+        font-size: 8px;
+
+    }
+
+
+    .flower-art {
+
+        transform:
+            scale(0.82);
+
+    }
+
+
+    .flower-tulip .flower-art {
+
+        transform:
+            translateY(4px)
+            scale(0.82);
+
+    }
+
+
+    .bouquet-area {
+
+        height: 225px;
+
+    }
+
+
+    .bouquet-stem {
+
+        height: 190px;
+
+    }
+
+
+    .stem-line {
+
+        bottom: 0;
+
+    }
+
+
+    .leaf-left {
+
+        top: 110px;
+
+    }
+
+
+    .leaf-right {
+
+        top: 140px;
+
+    }
+
+
+    .vase-area {
+
+        width: 180px;
+
+        height: 170px;
+
+    }
+
+
+    .vase {
+
+        font-size: 90px;
+
+    }
+
+
+    .flower-completion {
+
+        bottom: 55px;
+
+    }
+
+
+    .flower-completion p {
+
+        font-size: 30px;
+
+    }
+
+
+    .flower-completion span {
+
+        font-size: 11px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    #back-to-greeting {
+
+        margin-top: 8px;
+
+    }
+
+}
+
+
+@keyframes completionSparkle {
+
+    0%,
+    100% {
+
+        opacity: 0.25;
+
+        transform: scale(0.7) translateY(2px);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.1) translateY(-3px);
+
+    }
+
+}
+
+/* ========================================
+   FINAL BOUQUET
+======================================== */
+
+.bouquet-final {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    opacity: 0;
+
+    transform:
+        scale(0.82);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.7s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.35,
+            1.2
+        );
+
+}
+
+
+/* ========================================
+   FINAL BOUQUET VISIBLE
+======================================== */
+
+.bouquet-final.visible {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    filter:
+        drop-shadow(
+            0 15px 25px
+            rgba(190, 91, 130, 0.18)
+        );
+
+}
+
+
+/* ========================================
+   HIDE EMPTY BOUQUET
+======================================== */
+
+.bouquet-base.hidden {
+
+    opacity: 0;
+
+}
+
+
+/* ========================================
+   HIDE PLACED FLOWERS
+======================================== */
+
+.bouquet-target.completed {
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+/* ========================================
+   BOUQUET CELEBRATION
+======================================== */
+
+.bouquet-area.bouquet-celebration {
+
+    animation:
+        bouquetCelebration
+        1s
+        ease-out;
+
+}
+
+
+@keyframes bouquetCelebration {
+
+    0% {
+
+        transform:
+            scale(1);
+
+    }
+
+    25% {
+
+        transform:
+            scale(1.06);
+
+    }
+
+    50% {
+
+        transform:
+            scale(0.98);
+
+    }
+
+    75% {
+
+        transform:
+            scale(1.03);
+
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* ========================================
+   SPARKLE
+======================================== */
+
+.bouquet-sparkle {
+
+    position: absolute;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    color: #f29abb;
+
+    font-size:
+        clamp(
+            16px,
+            2.5vw,
+            28px
+        );
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 8px #ffffff,
+        0 0 18px rgba(255, 160, 195, 0.9);
+
+    animation:
+        bouquetSparkle
+        1.8s
+        ease-out
+        forwards;
+
+}
+
+
+@keyframes bouquetSparkle {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.2)
+            rotate(0deg);
+
+    }
+
+    25% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.35)
+            rotate(45deg);
+
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(90deg);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(0.4)
+            rotate(180deg)
+            translateY(-25px);
+
+    }
+
+}
+
+
+#continue-to-birthday {
+
+    margin-top: 16px;
+
+    padding: 8px 20px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #3d2932;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+pointer-events: auto;
+
+    opacity: 0.58;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+#continue-to-birthday:hover {
+
+    opacity: 1;
+
+    transform: translateY(-2px);
+
+}
