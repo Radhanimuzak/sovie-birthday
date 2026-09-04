@@ -1,427 +1,639 @@
-#final-message-scene{
-    display:none;
-    min-height:100vh;
-    position:relative;
-    overflow:hidden;
+#final-message-scene {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
     background:
-        radial-gradient(circle at 8% 8%,#ffe7ed99,transparent 30rem),
-        linear-gradient(145deg,#fffdfa,#fbedf0 52%,#fff9f4)
+        radial-gradient(
+            circle at 8% 8%,
+            #ffe7ed99,
+            transparent 30rem
+        ),
+        linear-gradient(
+            145deg,
+            #fffdfa,
+            #fbedf0 52%,
+            #fff9f4
+        );
 }
 
-#final-message-scene.active{
-    display:block
+#final-message-scene.active {
+    display: block;
 }
 
-.final-container{
-    padding:86px 0 105px;
-    position:relative;
-    z-index:1
+
+/* ==============================
+   BACK TO SCENE 09
+   ============================== */
+
+.final-back-button {
+    position: absolute;
+    top: 24px;
+    left: clamp(18px, 3vw, 42px);
+    z-index: 10;
+
+    min-height: 44px;
+    padding: 11px 12px;
+
+    border: 0;
+    background: transparent;
+
+    color: #875a6a;
+
+    font: 700 0.68rem/1 Georgia, "Times New Roman", serif;
+
+    letter-spacing: 0.16em;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease,
+        opacity 0.25s ease;
 }
 
-.final-atmosphere{
-    position:absolute;
-    inset:0;
-    overflow:hidden;
-    pointer-events:none
+.final-back-button span:first-child {
+    font-size: 1.15rem;
+    line-height: 1;
+    transition: transform 0.25s ease;
 }
 
-.final-atmosphere span{
-    position:absolute;
-    color:#d9829c;
-    animation:finalFloat 9s ease-in-out infinite
+.final-back-button:hover {
+    color: #512738;
+    transform: translateX(-2px);
 }
 
-.final-atmosphere span:nth-child(1){
-    left:8%;
-    top:17%
+.final-back-button:hover span:first-child {
+    transform: translateX(-3px);
 }
 
-.final-atmosphere span:nth-child(2){
-    right:11%;
-    top:39%;
-    animation-delay:-4s
+.final-back-button:focus-visible {
+    outline: 1px solid #cf7893;
+    outline-offset: 3px;
 }
 
-.final-atmosphere span:nth-child(3){
-    left:15%;
-    bottom:13%;
-    animation-delay:-7s
+
+/* ==============================
+   FINAL CONTAINER
+   ============================== */
+
+.final-container {
+    padding: 86px 0 105px;
+    position: relative;
+    z-index: 1;
 }
+
+
+/* ==============================
+   ATMOSPHERE
+   ============================== */
+
+.final-atmosphere {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.final-atmosphere span {
+    position: absolute;
+    color: #d9829c;
+    animation: finalFloat 9s ease-in-out infinite;
+}
+
+.final-atmosphere span:nth-child(1) {
+    left: 8%;
+    top: 17%;
+}
+
+.final-atmosphere span:nth-child(2) {
+    right: 11%;
+    top: 39%;
+    animation-delay: -4s;
+}
+
+.final-atmosphere span:nth-child(3) {
+    left: 15%;
+    bottom: 13%;
+    animation-delay: -7s;
+}
+
 
 /* ==============================
    FINAL ALBUM INTRO
    ============================== */
 
-.final-album-intro{
-    width:100%;
-    margin:0 auto 68px;
-    text-align:center;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.final-album-intro {
+    width: 100%;
+    margin: 0 auto 68px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.final-album-intro span{
-    font-size:1.5rem;
-    color:#d47894
+.final-album-intro span {
+    font-size: 1.5rem;
+    color: #d47894;
 }
 
 .final-album-intro p,
-.letter-kicker{
-    margin-top:12px;
-    color:#aa627a;
-    font-size:.68rem;
-    font-weight:700;
-    letter-spacing:.22em;
-    text-align:center;
+.letter-kicker {
+    margin-top: 12px;
+
+    color: #aa627a;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.22em;
+
+    text-align: center;
 }
 
-.final-album-intro h1{
-    width:100%;
-    margin:13px 0 18px;
-    color:#482535;
-    font-size:clamp(2.5rem,6vw,4.7rem);
-    font-weight:400;
-    letter-spacing:.06em;
-    text-align:center;
+.final-album-intro h1 {
+    width: 100%;
+
+    margin: 13px 0 18px;
+
+    color: #482535;
+
+    font-size: clamp(2.5rem, 6vw, 4.7rem);
+    font-weight: 400;
+
+    letter-spacing: 0.06em;
+
+    text-align: center;
 }
 
-.final-album-intro i{
-    display:block;
-    width:82px;
-    height:1px;
-    margin:0 auto;
-    background:linear-gradient(
+.final-album-intro i {
+    display: block;
+
+    width: 82px;
+    height: 1px;
+
+    margin: 0 auto;
+
+    background: linear-gradient(
         90deg,
         transparent,
         #cf7893,
         transparent
-    )
+    );
 }
 
-.final-album-intro em{
-    display:block;
-    margin-top:20px;
-    color:#875a6a;
-    line-height:1.7;
-    text-align:center;
+.final-album-intro em {
+    display: block;
+
+    margin-top: 20px;
+
+    color: #875a6a;
+
+    line-height: 1.7;
+
+    text-align: center;
 }
+
 
 /* ==============================
    VIVI PHOTO WALL
    ============================== */
 
-.vivi-album{
-    display:grid;
-    gap:clamp(20px,3vw,38px);
-    overflow:hidden
+.vivi-album {
+    display: grid;
+
+    gap: clamp(20px, 3vw, 38px);
+
+    overflow: hidden;
 }
 
-.memory-wall-row{
-    overflow:hidden;
-    width:100%;
-    padding:9px 0
+.memory-wall-row {
+    overflow: hidden;
+
+    width: 100%;
+
+    padding: 9px 0;
 }
 
-.memory-wall-track{
-    display:flex;
-    width:max-content;
-    gap:clamp(16px,2vw,28px);
-    will-change:transform
+.memory-wall-track {
+    display: flex;
+
+    width: max-content;
+
+    gap: clamp(16px, 2vw, 28px);
+
+    will-change: transform;
 }
 
-.wall-left .memory-wall-track{
-    animation:wallLeft 48s linear infinite
+.wall-left .memory-wall-track {
+    animation: wallLeft 48s linear infinite;
 }
 
-.wall-right .memory-wall-track{
-    animation:wallRight 55s linear infinite
+.wall-right .memory-wall-track {
+    animation: wallRight 55s linear infinite;
 }
 
-.wall-photo{
-    flex:0 0 auto;
-    height:clamp(190px,27vw,340px);
-    padding:8px;
-    border:1px solid #cd849748;
-    border-radius:4px;
-    background:#fffdfc;
-    box-shadow:0 13px 29px #5b2d3f2e;
-    cursor:pointer;
-    transition:transform .25s ease,filter .25s ease
+.wall-photo {
+    flex: 0 0 auto;
+
+    height: clamp(190px, 27vw, 340px);
+
+    padding: 8px;
+
+    border: 1px solid #cd849748;
+    border-radius: 4px;
+
+    background: #fffdfc;
+
+    box-shadow: 0 13px 29px #5b2d3f2e;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
 }
 
-.wall-photo:nth-child(3n){
-    transform:rotate(-.6deg)
+.wall-photo:nth-child(3n) {
+    transform: rotate(-0.6deg);
 }
 
-.wall-photo:nth-child(4n){
-    transform:rotate(.6deg)
+.wall-photo:nth-child(4n) {
+    transform: rotate(0.6deg);
 }
 
-.wall-photo:hover{
-    transform:scale(1.025);
-    filter:brightness(1.03)
+.wall-photo:hover {
+    transform: scale(1.025);
+    filter: brightness(1.03);
 }
 
-.wall-photo img{
-    display:block;
-    height:100%;
-    width:auto;
-    max-width:clamp(170px,24vw,320px);
-    object-fit:contain
+.wall-photo img {
+    display: block;
+
+    height: 100%;
+    width: auto;
+
+    max-width: clamp(170px, 24vw, 320px);
+
+    object-fit: contain;
 }
+
 
 /* ==============================
    ALBUM TO LETTER
    ============================== */
 
-.album-to-letter{
-    max-width:530px;
-    margin:125px auto 130px;
-    text-align:center;
-    opacity:0;
-    transform:translateY(20px);
-    transition:.8s
+.album-to-letter {
+    max-width: 530px;
+
+    margin: 125px auto 130px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition: 0.8s;
 }
 
-.album-to-letter.is-visible{
-    opacity:1;
-    transform:none
+.album-to-letter.is-visible {
+    opacity: 1;
+    transform: none;
 }
 
-.album-to-letter p{
-    color:#aa627a;
-    font-size:.68rem;
-    font-weight:700;
-    letter-spacing:.18em
+.album-to-letter p {
+    color: #aa627a;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
 }
 
-.album-to-letter span{
-    display:block;
-    margin:24px;
-    color:#d17893
+.album-to-letter span {
+    display: block;
+
+    margin: 24px;
+
+    color: #d17893;
 }
 
-.album-to-letter em{
-    display:block;
-    color:#805666;
-    line-height:1.7
+.album-to-letter em {
+    display: block;
+
+    color: #805666;
+
+    line-height: 1.7;
 }
 
-.album-to-letter strong{
-    display:block;
-    margin-top:16px;
-    color:#633442;
-    font-size:1.2rem;
-    font-style:italic
+.album-to-letter strong {
+    display: block;
+
+    margin-top: 16px;
+
+    color: #633442;
+
+    font-size: 1.2rem;
+
+    font-style: italic;
 }
+
 
 /* ==============================
    FINAL LETTER
    ============================== */
 
-.final-letter{
-    width:min(650px,calc(100% - 36px));
-    margin:auto;
-    color:#5c3d48;
-    font-size:clamp(1rem,1.7vw,1.12rem);
-    line-height:1.9;
-    text-align:center
+.final-letter {
+    width: min(650px, calc(100% - 36px));
+
+    margin: auto;
+
+    color: #5c3d48;
+
+    font-size: clamp(1rem, 1.7vw, 1.12rem);
+
+    line-height: 1.9;
+
+    text-align: center;
 }
 
-.final-letter > p{
-    margin:0 auto 28px
+.final-letter > p {
+    margin: 0 auto 28px;
 }
 
-.final-letter h2{
-    margin:15px 0 5px;
-    color:#482535;
-    font-size:clamp(2.1rem,5vw,3.8rem);
-    font-weight:400
+.final-letter h2 {
+    margin: 15px 0 5px;
+
+    color: #482535;
+
+    font-size: clamp(2.1rem, 5vw, 3.8rem);
+
+    font-weight: 400;
 }
 
-.letter-name{
-    color:#934d66;
-    font-size:1.25rem;
-    font-style:italic
+.letter-name {
+    color: #934d66;
+
+    font-size: 1.25rem;
+
+    font-style: italic;
 }
 
-.final-letter blockquote{
-    max-width:540px;
-    margin:54px auto;
-    padding:30px 22px;
-    border-top:1px solid #d48ba050;
-    border-bottom:1px solid #d48ba050;
-    color:#854358;
-    font-size:clamp(1.25rem,2.8vw,1.8rem);
-    font-style:italic;
-    line-height:1.55
+.final-letter blockquote {
+    max-width: 540px;
+
+    margin: 54px auto;
+
+    padding: 30px 22px;
+
+    border-top: 1px solid #d48ba050;
+    border-bottom: 1px solid #d48ba050;
+
+    color: #854358;
+
+    font-size: clamp(1.25rem, 2.8vw, 1.8rem);
+
+    font-style: italic;
+
+    line-height: 1.55;
 }
 
-.letter-last{
-    font-size:1.16em;
-    color:#7d3d53
+.letter-last {
+    font-size: 1.16em;
+
+    color: #7d3d53;
 }
 
-.letter-ending{
-    margin:100px auto 0;
-    padding-top:50px;
-    border-top:1px solid #d48ba05e;
-    color:#7c5060
+.letter-ending {
+    margin: 100px auto 0;
+
+    padding-top: 50px;
+
+    border-top: 1px solid #d48ba05e;
+
+    color: #7c5060;
 }
 
-.letter-ending h2{
-    margin:24px 0 10px;
-    color:#512738;
-    font-size:clamp(1.6rem,4vw,2.7rem);
-    letter-spacing:.07em
+.letter-ending h2 {
+    margin: 24px 0 10px;
+
+    color: #512738;
+
+    font-size: clamp(1.6rem, 4vw, 2.7rem);
+
+    letter-spacing: 0.07em;
 }
 
-.letter-ending strong{
-    color:#b55e7b
+.letter-ending strong {
+    color: #b55e7b;
 }
+
 
 /* ==============================
    PHOTO LIGHTBOX
    ============================== */
 
-.final-photo-lightbox{
-    position:fixed;
-    inset:0;
-    z-index:50;
-    display:grid;
-    place-items:center;
-    padding:25px;
-    background:#26171ccc;
-    backdrop-filter:blur(8px);
-    opacity:0;
-    pointer-events:none;
-    transition:opacity .25s
+.final-photo-lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 50;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 25px;
+
+    background: #26171ccc;
+
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.25s ease;
 }
 
-.final-photo-lightbox.is-open{
-    opacity:1;
-    pointer-events:auto
+.final-photo-lightbox.is-open {
+    opacity: 1;
+
+    pointer-events: auto;
 }
 
-.final-photo-lightbox img{
-    max-width:92vw;
-    max-height:88vh;
-    object-fit:contain;
-    box-shadow:0 22px 70px #0008
+.final-photo-lightbox img {
+    max-width: 92vw;
+
+    max-height: 88vh;
+
+    object-fit: contain;
+
+    box-shadow: 0 22px 70px #0008;
 }
 
-.final-photo-lightbox button{
-    position:absolute;
-    right:22px;
-    top:18px;
-    width:40px;
-    height:40px;
-    border:0;
-    border-radius:50%;
-    background:#c96987;
-    color:#fff;
-    font-size:1.7rem;
-    cursor:pointer
+.final-photo-lightbox button {
+    position: absolute;
+
+    right: 22px;
+    top: 18px;
+
+    width: 40px;
+    height: 40px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #c96987;
+
+    color: #fff;
+
+    font-size: 1.7rem;
+
+    cursor: pointer;
 }
+
 
 /* ==============================
    ANIMATIONS
    ============================== */
 
-@keyframes wallLeft{
-    from{
-        transform:translateX(0)
+@keyframes wallLeft {
+
+    from {
+        transform: translateX(0);
     }
 
-    to{
-        transform:translateX(-50%)
+    to {
+        transform: translateX(-50%);
     }
+
 }
 
-@keyframes wallRight{
-    from{
-        transform:translateX(-50%)
+@keyframes wallRight {
+
+    from {
+        transform: translateX(-50%);
     }
 
-    to{
-        transform:translateX(0)
+    to {
+        transform: translateX(0);
     }
+
 }
 
-@keyframes finalFloat{
-    50%{
-        opacity:.75;
-        transform:translateY(-26px)
+@keyframes finalFloat {
+
+    50% {
+        opacity: 0.75;
+
+        transform: translateY(-26px);
     }
+
 }
+
 
 /* ==============================
    MOBILE
    ============================== */
 
-@media(max-width:600px){
+@media (max-width: 600px) {
 
-    .final-container{
-        padding-top:58px
+    .final-back-button {
+        top: 12px;
+
+        left: 6px;
+
+        padding: 12px;
     }
 
-    .final-album-intro{
-        width:100%;
-        padding:0 18px;
-        margin-bottom:50px;
+    .final-container {
+        padding-top: 70px;
     }
 
-    .final-album-intro h1{
-        width:100%;
-        text-align:center;
-        font-size:clamp(2.2rem,10vw,3.2rem);
+    .final-album-intro {
+        width: 100%;
+
+        padding: 0 18px;
+
+        margin-bottom: 50px;
+    }
+
+    .final-album-intro h1 {
+        width: 100%;
+
+        text-align: center;
+
+        font-size: clamp(
+            2.2rem,
+            10vw,
+            3.2rem
+        );
     }
 
     .final-album-intro p,
-    .final-album-intro em{
-        text-align:center;
+    .final-album-intro em {
+        text-align: center;
     }
 
-    .vivi-album{
-        gap:13px
+    .vivi-album {
+        gap: 13px;
     }
 
-    .wall-photo{
-        height:clamp(145px,42vw,220px);
-        padding:6px
+    .wall-photo {
+        height: clamp(
+            145px,
+            42vw,
+            220px
+        );
+
+        padding: 6px;
     }
 
-    .memory-wall-track{
-        gap:12px
+    .memory-wall-track {
+        gap: 12px;
     }
 
-    .album-to-letter{
-        margin:90px auto 84px
+    .album-to-letter {
+        margin: 90px auto 84px;
     }
 
-    .final-letter blockquote{
-        margin:42px auto;
-        padding:25px 14px
+    .final-letter blockquote {
+        margin: 42px auto;
+
+        padding: 25px 14px;
     }
+
 }
+
 
 /* ==============================
    REDUCED MOTION
    ============================== */
 
-@media(prefers-reduced-motion:reduce){
+@media (prefers-reduced-motion: reduce) {
 
-    .memory-wall-track{
-        animation:none!important;
-        transform:none!important
+    .memory-wall-track {
+        animation: none !important;
+
+        transform: none !important;
     }
 
-    .final-atmosphere span{
-        animation:none
+    .final-atmosphere span {
+        animation: none;
     }
 
-    .wall-photo{
-        transform:none!important
+    .wall-photo {
+        transform: none !important;
     }
+
 }

@@ -11,7 +11,8 @@ const memoryLightboxClose = document.getElementById("memory-lightbox-close");
 const memoryStoryBlocks = document.querySelectorAll("#memory-scene .memory-story-block");
 
 let memoryStoryObserver = null;
-const memoryAudio = new Audio("assets/music/Boys_To_Men_-_ON_BENDED_KNEE_(mp3.pm).mp3");
+const memoryAudio = new Audio();
+memoryAudio.preload = "metadata";
 const memoryAudioToggle = document.getElementById("memory-audio-toggle");
 const memoryAudioProgress = document.getElementById("memory-audio-progress");
 const memoryAudioTime = document.getElementById("memory-audio-time");
@@ -31,6 +32,7 @@ function updateMemoryAudioUi() {
 }
 
 if (memoryAudioToggle) memoryAudioToggle.addEventListener("click", () => {
+    if (!memoryAudio.src) memoryAudio.src = "assets/music/Boys_To_Men_-_ON_BENDED_KNEE_(mp3.pm).mp3";
     if (memoryAudio.paused) window.audioManager.playForeground(memoryAudio, "memory-scene").catch(() => {});
     else window.audioManager.pauseForeground(memoryAudio);
     updateMemoryAudioUi();

@@ -38,7 +38,9 @@ const persistableSceneIds = [
 
 // One shared background track. Foreground scene players use this small
 // coordinator so music never overlaps and the background position is retained.
-const backgroundAudio = new Audio("assets/music/Nat%20King%20Cole%20-%20L-O-V-E%20(Sax%20Cover)%20Brendan%20Mills.mp3");
+const backgroundAudio = new Audio();
+backgroundAudio.preload = "metadata";
+backgroundAudio.src = "assets/music/Nat%20King%20Cole%20-%20L-O-V-E%20(Sax%20Cover)%20Brendan%20Mills.mp3";
 backgroundAudio.loop = true;
 backgroundAudio.volume = 0.18;
 
@@ -47,9 +49,24 @@ window.audioManager = {
     foregroundAudio: null,
     foregroundSceneId: null,
     resumeBackground: false,
+    backgroundStarted: false,
+    backgroundStartPending: false,
     startBackground() {
-        if (this.foregroundAudio && !this.foregroundAudio.paused) return;
-        backgroundAudio.play().catch(() => {});
+        if (this.foregroundAudio && !this.foregroundAudio.paused) return Promise.resolve(false);
+        if (this.backgroundStartPending) return Promise.resolve(false);
+        if (this.backgroundStarted && !backgroundAudio.paused) return Promise.resolve(true);
+
+        this.backgroundStartPending = true;
+
+        return backgroundAudio.play()
+            .then(() => {
+                this.backgroundStarted = true;
+                return true;
+            })
+            .catch(() => false)
+            .finally(() => {
+                this.backgroundStartPending = false;
+            });
     },
     playForeground(audio, sceneId) {
         if (this.foregroundAudio && this.foregroundAudio !== audio) {
@@ -84,8 +101,21 @@ window.audioManager = {
     }
 };
 
-document.addEventListener("pointerdown", () => window.audioManager.startBackground(), { once: true });
-document.addEventListener("keydown", () => window.audioManager.startBackground(), { once: true });
+function removeBackgroundAudioStarters() {
+    document.removeEventListener("pointerdown", beginBackgroundAfterInteraction);
+    document.removeEventListener("touchstart", beginBackgroundAfterInteraction);
+    document.removeEventListener("keydown", beginBackgroundAfterInteraction);
+}
+
+function beginBackgroundAfterInteraction() {
+    window.audioManager.startBackground().then((started) => {
+        if (started) removeBackgroundAudioStarters();
+    });
+}
+
+document.addEventListener("pointerdown", beginBackgroundAfterInteraction, { passive: true });
+document.addEventListener("touchstart", beginBackgroundAfterInteraction, { passive: true });
+document.addEventListener("keydown", beginBackgroundAfterInteraction);
 
 function persistActiveScene() {
 
@@ -165,10 +195,18 @@ function observeActiveScene() {
         return;
     }
 
+    let lastActiveSceneId = null;
+
     new MutationObserver(() => {
         persistActiveScene();
 
         const activeScene = document.querySelector("#app .scene.active");
+
+        if (activeScene && activeScene.id !== lastActiveSceneId) {
+            lastActiveSceneId = activeScene.id;
+            window.scrollTo(0, 0);
+        }
+
         if (activeScene && window.audioManager) {
             const activeSceneId = activeScene.id;
             if (window.audioManager.foregroundSceneId && window.audioManager.foregroundSceneId !== activeSceneId) {
@@ -421,8 +459,16 @@ function showOurMemoriesScene() {
 }
 
 function showMusicScene() {
-    if (!ourMemoriesScene || !musicScene) return;
-    ourMemoriesScene.classList.remove("active");
+    if (!musicScene) return;
+
+    if (ourMemoriesScene) {
+        ourMemoriesScene.classList.remove("active");
+    }
+
+    if (finalMessageScene) {
+        finalMessageScene.classList.remove("active");
+    }
+
     musicScene.classList.add("active");
     if (typeof initializeMusicScene === "function") initializeMusicScene();
 }
@@ -485,6 +531,10 @@ async function loadBirthdayScenes() {
 
     const app = document.getElementById("app");
 
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+
     try {
 
         const sceneMarkup = await Promise.all(
@@ -523,6 +573,7 @@ async function loadBirthdayScenes() {
             localStorage.setItem(activeSceneStorageKey, "countdown-scene");
         }
         observeActiveScene();
+        window.audioManager.startBackground();
 
     } catch (error) {
 
