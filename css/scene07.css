@@ -45,6 +45,8 @@
 .memory-text-entry .memory-number { margin-bottom: 12px; }
 .memory-us { padding-top: 38px; padding-bottom: 38px; background: rgba(255,255,255,.36); border-top: 1px solid rgba(205, 132, 153, .22); border-bottom: 1px solid rgba(205, 132, 153, .22); }
 .memory-problem { margin-top: 45px !important; }
+.memory-audio-player { display: grid; grid-template-columns: 1fr auto; gap: 8px 13px; max-width: 410px; margin: 22px auto 8px; padding: 12px 14px; border: 1px solid rgba(205,132,153,.26); border-radius: 12px; background: rgba(255,255,255,.48); text-align: left; }
+.memory-audio-player strong, .memory-audio-player span { display: block; color: #87465d; font-size: .67rem; letter-spacing: .12em; }.memory-audio-player span { margin-top: 3px; color: #a26a7c; font-style: italic; letter-spacing: .04em; }.memory-audio-player button { grid-row: 1 / span 2; grid-column: 2; width: 34px; height: 34px; border: 1px solid #cf7893; border-radius: 50%; background: #c96f8c; color: #fff; cursor: pointer; }.memory-audio-player input { grid-column: 1 / span 2; width: 100%; accent-color: #c96f8c; }.memory-audio-player #memory-audio-time { grid-column: 1 / span 2; font-size: .62rem; text-align: right; }
 
 .memory-flowers { max-width: 900px; margin: 0 auto; text-align: center; }
 .memory-flower-heading { color: #5b3743; font-size: 1.06rem; line-height: 1.8; margin-bottom: 32px; }

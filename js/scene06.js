@@ -469,9 +469,7 @@ const continueToMemoriesButton = document.getElementById(
 );
 
 if (continueToMemoriesButton) {
-    continueToMemoriesButton.addEventListener("click", (event) => {
-        event.preventDefault();
-
+    continueToMemoriesButton.addEventListener("click", () => {
         if (typeof showMemoryScene === "function") {
             showMemoryScene();
         }

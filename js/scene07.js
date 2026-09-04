@@ -1,5 +1,8 @@
 const memorySceneElement = document.getElementById("memory-scene");
 const memoryBackButton = document.getElementById("back-to-birthday");
+const continueToOurMemoriesButton = document.getElementById(
+    "continue-to-our-memories"
+);
 const memoryPhotoCards = document.querySelectorAll("#memory-scene .memory-photo-card");
 const memoryLightbox = document.getElementById("memory-lightbox");
 const memoryLightboxImage = document.getElementById("memory-lightbox-image");
@@ -8,6 +11,34 @@ const memoryLightboxClose = document.getElementById("memory-lightbox-close");
 const memoryStoryBlocks = document.querySelectorAll("#memory-scene .memory-story-block");
 
 let memoryStoryObserver = null;
+const memoryAudio = new Audio("assets/music/Boys_To_Men_-_ON_BENDED_KNEE_(mp3.pm).mp3");
+const memoryAudioToggle = document.getElementById("memory-audio-toggle");
+const memoryAudioProgress = document.getElementById("memory-audio-progress");
+const memoryAudioTime = document.getElementById("memory-audio-time");
+
+function formatMemoryAudioTime(seconds) {
+    const total = Math.floor(Number.isFinite(seconds) ? seconds : 0);
+    return `${String(Math.floor(total / 60)).padStart(2, "0")}:${String(total % 60).padStart(2, "0")}`;
+}
+
+function updateMemoryAudioUi() {
+    if (memoryAudioToggle) memoryAudioToggle.textContent = memoryAudio.paused ? "▶" : "❚❚";
+    if (memoryAudioProgress) {
+        memoryAudioProgress.max = Number.isFinite(memoryAudio.duration) ? memoryAudio.duration : 0;
+        memoryAudioProgress.value = memoryAudio.currentTime;
+    }
+    if (memoryAudioTime) memoryAudioTime.textContent = formatMemoryAudioTime(memoryAudio.currentTime);
+}
+
+if (memoryAudioToggle) memoryAudioToggle.addEventListener("click", () => {
+    if (memoryAudio.paused) window.audioManager.playForeground(memoryAudio, "memory-scene").catch(() => {});
+    else window.audioManager.pauseForeground(memoryAudio);
+    updateMemoryAudioUi();
+});
+if (memoryAudioProgress) memoryAudioProgress.addEventListener("input", () => { memoryAudio.currentTime = Number(memoryAudioProgress.value); updateMemoryAudioUi(); });
+memoryAudio.addEventListener("timeupdate", updateMemoryAudioUi);
+memoryAudio.addEventListener("loadedmetadata", updateMemoryAudioUi);
+memoryAudio.addEventListener("ended", () => { window.audioManager.pauseForeground(memoryAudio); updateMemoryAudioUi(); });
 
 function closeMemoryLightbox() {
     if (!memoryLightbox) return;
@@ -74,6 +105,16 @@ if (memoryBackButton) {
         memorySceneElement.classList.remove("active");
         birthdayScene.classList.add("active");
         if (typeof initializeBirthdayScene === "function") initializeBirthdayScene();
+    });
+}
+
+if (continueToOurMemoriesButton) {
+    continueToOurMemoriesButton.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (typeof showOurMemoriesScene === "function") {
+            showOurMemoriesScene();
+        }
     });
 }
 
